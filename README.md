@@ -4,6 +4,8 @@ Build a simple CLI blackjack game where a single player can play against a deale
 
 ## Classes
 
+![alt text](design/Blackjack.drawio.svg)
+
 ### Player
 Players come in two flavors.  The dealer, who will play as computer, and (human) Player.  
 
