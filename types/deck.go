@@ -37,9 +37,9 @@ func (d Deck) String() string {
 // Constructor to geenrate a standard 52 Card deck
 func NewDeck() *Deck {
 	deck := make([]Card, 0, 52)
-	for _, suite := range Suites {
-		for _, face := range Faces {
-			deck = append(deck, NewCard(suite, face))
+	for _, suite := range Suits {
+		for _, rank := range Ranks {
+			deck = append(deck, NewCard(suite, rank))
 		}
 	}
 	return &Deck{
@@ -51,9 +51,9 @@ func NewDeck() *Deck {
 func NewMultiDeck(n int) *Deck {
 	deck := make([]Card, 0, 52*n)
 	for i := 0; i < n; i++ {
-		for _, suite := range Suites {
-			for _, face := range Faces {
-				deck = append(deck, Card{suite, face})
+		for _, suite := range Suits {
+			for _, rank := range Ranks {
+				deck = append(deck, Card{suite, rank})
 			}
 		}
 	}

@@ -4,31 +4,30 @@ import (
 	"fmt"
 )
 
-type Suite rune
+type Suit rune
 
-// Suite represent the four suites in a standard deck
+// Suit represent the four Suits in a standard deck
 const (
-	Spades   Suite = '\u2660'
-	Hearts   Suite = '\u2661'
-	Diamonds Suite = '\u2662'
-	Clubs    Suite = '\u2663'
+	Spades   Suit = '\u2660'
+	Hearts   Suit = '\u2661'
+	Diamonds Suit = '\u2662'
+	Clubs    Suit = '\u2663'
 )
 
-// Array version of suits for easy iteration
+// Collection of Suits for easy iteration
 // such as that done while genrating a deck
-var Suites = []Suite{
+var Suits = []Suit{
 	Spades,
 	Hearts,
 	Diamonds,
 	Clubs,
 }
 
-// Face of a card, this represent the face value of a card
-// NOTE: represents all cards, not just "face" cards, i.e. Two, Three... included
-type Face byte
+// Rank of a card, this represent the Rank value of a card
+type Rank byte
 
 const (
-	Ace Face = 1 + iota
+	Ace Rank = 1 + iota
 	Two
 	Three
 	Four
@@ -43,9 +42,9 @@ const (
 	King
 )
 
-// Array version of face for easy iteration
+// Collection Rank for easy iteration
 // such as that done while genrating a deck
-var Faces = []Face{
+var Ranks = []Rank{
 	Ace,
 	Two,
 	Three,
@@ -63,27 +62,27 @@ var Faces = []Face{
 
 // Card struct
 type Card struct {
-	suite Suite
-	face  Face
+	Suit Suit
+	Rank Rank
 }
 
 // Simple Card constructor
-func NewCard(suite Suite, face Face) Card {
-	return Card{suite, face}
+func NewCard(Suit Suit, Rank Rank) Card {
+	return Card{Suit, Rank}
 }
 
 // Pretty print a card
 func (c Card) String() string {
-	face := fmt.Sprint(c.face)
-	switch c.face {
+	Rank := fmt.Sprint(c.Rank)
+	switch c.Rank {
 	case Ace:
-		face = "ACE"
+		Rank = "ACE"
 	case Jack:
-		face = "JACK"
+		Rank = "JACK"
 	case Queen:
-		face = "QUEEN"
+		Rank = "QUEEN"
 	case King:
-		face = "KING"
+		Rank = "KING"
 	}
-	return fmt.Sprintf("{%v, %v}", string(c.suite), face)
+	return fmt.Sprintf("{%v, %v}", string(c.Suit), Rank)
 }

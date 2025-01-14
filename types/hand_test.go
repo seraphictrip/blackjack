@@ -18,34 +18,34 @@ var HandTests = []struct {
 	// 21 aces
 	{slices.Repeat([]types.Card{types.NewCard(types.Clubs, types.Ace)}, 21), 21},
 	// ACE + 10
-	{makeCards([]types.Face{1, 10}), 21},
+	{makeCards([]types.Rank{1, 10}), 21},
 	// ACE + Jack
-	{makeCards([]types.Face{1, 11}), 21},
+	{makeCards([]types.Rank{1, 11}), 21},
 	// ACE + Queen
-	{makeCards([]types.Face{1, 12}), 21},
+	{makeCards([]types.Rank{1, 12}), 21},
 	// ACE + King
-	{makeCards([]types.Face{1, 13}), 21},
+	{makeCards([]types.Rank{1, 13}), 21},
 	// ACE + 2 + 8
-	{makeCards([]types.Face{1, 2, 8}), 21},
-	{makeCards([]types.Face{1, 3, 7}), 21},
-	{makeCards([]types.Face{1, 1, 9}), 21},
-	{makeCards([]types.Face{1, 4, 6}), 21},
-	{makeCards([]types.Face{1, 5, 5}), 21},
+	{makeCards([]types.Rank{1, 2, 8}), 21},
+	{makeCards([]types.Rank{1, 3, 7}), 21},
+	{makeCards([]types.Rank{1, 1, 9}), 21},
+	{makeCards([]types.Rank{1, 4, 6}), 21},
+	{makeCards([]types.Rank{1, 5, 5}), 21},
 	// would break
-	{makeCards([]types.Face{1, 1, 10}), 12},
-	{makeCards([]types.Face{1, 2, 10}), 13},
-	{makeCards([]types.Face{1, 3, 10}), 14},
-	{makeCards([]types.Face{1, 4, 10}), 15},
-	{makeCards([]types.Face{1, 5, 10}), 16},
-	{makeCards([]types.Face{1, 6, 10}), 17},
-	{makeCards([]types.Face{1, 7, 10}), 18},
-	{makeCards([]types.Face{1, 8, 10}), 19},
-	{makeCards([]types.Face{1, 9, 10}), 20},
-	{makeCards([]types.Face{1, 10, 11}), 21},
-	{makeCards([]types.Face{1, 10, 12}), 21},
-	{makeCards([]types.Face{1, 10, 13}), 21},
+	{makeCards([]types.Rank{1, 1, 10}), 12},
+	{makeCards([]types.Rank{1, 2, 10}), 13},
+	{makeCards([]types.Rank{1, 3, 10}), 14},
+	{makeCards([]types.Rank{1, 4, 10}), 15},
+	{makeCards([]types.Rank{1, 5, 10}), 16},
+	{makeCards([]types.Rank{1, 6, 10}), 17},
+	{makeCards([]types.Rank{1, 7, 10}), 18},
+	{makeCards([]types.Rank{1, 8, 10}), 19},
+	{makeCards([]types.Rank{1, 9, 10}), 20},
+	{makeCards([]types.Rank{1, 10, 11}), 21},
+	{makeCards([]types.Rank{1, 10, 12}), 21},
+	{makeCards([]types.Rank{1, 10, 13}), 21},
 	// no saving
-	{makeCards([]types.Face{1, 2, 10, 11}), 23},
+	{makeCards([]types.Rank{1, 2, 10, 11}), 23},
 }
 
 func TestHand(t *testing.T) {
@@ -62,11 +62,11 @@ func TestHand(t *testing.T) {
 	}
 }
 
-func makeCards(fs []types.Face) []types.Card {
+func makeCards(fs []types.Rank) []types.Card {
 	cards := make([]types.Card, len(fs))
 	for i := 0; i < len(fs); i++ {
-		r := rand.IntN(len(types.Suites))
-		cards[i] = types.NewCard(types.Suites[r], fs[i])
+		r := rand.IntN(len(types.Suits))
+		cards[i] = types.NewCard(types.Suits[r], fs[i])
 	}
 	return cards
 }

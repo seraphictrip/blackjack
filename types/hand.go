@@ -60,13 +60,13 @@ func (h *Hand) calculateScore() {
 	// iterate over cards and calc score
 	aces := 0
 	for _, card := range h.cards {
-		switch card.face {
+		switch card.Rank {
 		case Ace:
 			aces++
 		case Jack, Queen, King, Ten:
 			score += 10
 		default:
-			score += int(card.face)
+			score += int(card.Rank)
 		}
 	}
 	// apply aces

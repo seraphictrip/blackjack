@@ -20,6 +20,8 @@ func main() {
 	for player.GetBalance() > 0 {
 		fmt.Printf("%v starts round with $%d\n", player.GetName(), player.GetBalance())
 		types.NewGameRound(dealer, player, deck).Play()
+		// reset deck after each round
+		deck = types.NewDeck()
 	}
 }
 
